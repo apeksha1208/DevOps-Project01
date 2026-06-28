@@ -1,0 +1,1 @@
+This project demonstrates a containerized microservices architecture using Docker and Kubernetes. It includes multiple applications built using different technologies (Node.js, Python, Spring Boot) along with CI/CD automation using GitHub Actions.
