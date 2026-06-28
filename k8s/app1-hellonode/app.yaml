@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: app1-hellonode
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: app1-hellonode
+
+  template:
+    metadata:
+      labels:
+        app: app1-hellonode
+
+    spec:
+      containers:
+        - name: myapp
+          image: embarkx/hello-node:latest
+          env:
+            - name: ENV_VALUE
+              value: "Hello from app.yaml"
+            - name: DB_PASSWORD
+              value: "cGFzc3dvcmQ="
+            # - name: APP_MESSAGE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: app-config
+            #       key: APP_MESSAGE
+            # - name: DB_PASSWORD
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: db-secret
+            #       key: DB_PASSWORD
+
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: myapp
+
+spec:
+  selector:
+    app: app1-hellonode
+
+  type: NodePort
+
+  ports:
+    - port: 3000 #service port whenever traffic come it hits this port
+      targetPort: 3000 # container port(traffic from serviceport comes here)
+      nodePort: 32000 #localhost port to access the service 
