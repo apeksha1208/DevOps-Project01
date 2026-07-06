@@ -23,12 +23,12 @@ jobs:
                 pip install -r requirements.txt
 
             - name: Run Smoke Test
-              run: python -m py_compile main.py
+              run: python -m py_compile docker/app1-hello/python/main.py
 
     docker-build-push:
         runs-on: ubuntu-latest
         needs: build-test
-        
+
         steps:
             - name: Checkout code
               uses: actions/checkout@v6
