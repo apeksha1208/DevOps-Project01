@@ -1,4 +1,4 @@
-name: Hello Spring Boot App To AWS EKS 
+name: Hello Spring Boot App To AWS_EKS 
 
 on:
   push:
