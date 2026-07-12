@@ -1,9 +1,9 @@
-name: Hello Spring Boot App To AWS_EKS 
+name: Hello Python App To AWS_EKS 
 
 on:
   push:
     paths:
-      - 'docker/app1-hello/springboot/hello-spring/**'
+      - 'docker/app1-hello/python/**'
   workflow_dispatch:
 
 jobs:
