@@ -91,4 +91,6 @@ jobs:
 
       - name: Deploy to AWS
         run: kubectl apply -f k8s/aws/app1-hellonode
+
+      
       
